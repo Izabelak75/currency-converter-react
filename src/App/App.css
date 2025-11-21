@@ -1,0 +1,9 @@
+.app {
+  flex-basis: 700px;
+  margin: 0 10 px;
+  padding: 0 20 px;
+  box-shadow: 4px 4px 30px #4e39aa;
+  border-radius: 10px;
+  background: #ffffff;
+  text-align: center;
+}
