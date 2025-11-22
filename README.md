@@ -12,7 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Demo
 
-![Demo]()
+![Demo](public/currency-converter-demo.gif)
 [Link to the Demo website](/)
 
 ## Technologies
