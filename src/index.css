@@ -14,7 +14,7 @@ html {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
+  margin: 10 px;
   background-color: #f3eaff;
   background-image: url("../src/background.jpg");
   background-size: cover;
