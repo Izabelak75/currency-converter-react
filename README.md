@@ -12,6 +12,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Demo
 
+![Demo]()
+[Link to the Demo website](/)
+
 ## Technologies
 
 - HTML
