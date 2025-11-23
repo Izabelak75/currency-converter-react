@@ -24,5 +24,5 @@ export const Clock = () => {
     };
   }, []);
 
-  return (<div className="clock">Dzisiaj jest {formatDate(date)}</div>;)
+  return <div className="clock">Dzisiaj jest {formatDate(date)}</div>;
 };
