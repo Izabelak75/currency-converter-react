@@ -1,16 +1,13 @@
 import { useState } from "react";
-import "./App.css";
 import { Form } from "./Form";
 import { Clock } from "./Clock";
-import { currencies } from "./currencies";
+import { Wrapper } from "./styled";
 
 function App() {
   return (
-    <div className="app">
+    <Wrapper>
       <Clock />
       <Form />
-    </div>
+    </Wrapper>
   );
 }
-
-export default App;
