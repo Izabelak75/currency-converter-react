@@ -28,7 +28,7 @@ export const Form = () => {
       <Header>Przelicznik walut</Header>
       <p>
         <label>
-          <LabelText>Kwota w złotówkach*:</LabelText>
+          <LabelText>Kwota w zl*:</LabelText>
           <Field
             value={amount}
             onChange={({ target }) => setAmount(target.value)}
