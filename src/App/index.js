@@ -11,3 +11,5 @@ function App() {
     </Wrapper>
   );
 }
+
+export default App;
