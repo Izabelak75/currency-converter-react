@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { currencies } from "../currencies";
 import { Result } from "./Result";
-import "./style.css";
+import { Button, Field, Header, Info, LabelText } from "./styled";
 
 export const Form = () => {
   const [currency, setCurrency] = useState(currencies[0].short);
@@ -24,16 +24,15 @@ export const Form = () => {
   };
 
   return (
-    <form className="form" onSubmit={onSubmit}>
-      <h1 className="form__header">Przelicznik walut</h1>
+    <form onSubmit={onSubmit}>
+      <Header>Przelicznik walut</Header>
       <p>
         <label>
-          <span className="form__labelText">Kwota w zł*:</span>
-          <input
+          <LabelText>Kwota w złotówkach*:</LabelText>
+          <Field
             value={amount}
             onChange={({ target }) => setAmount(target.value)}
             placeholder="Wpisz kwotę w zl"
-            className="form__field"
             type="number"
             required
             step="0.01"
@@ -42,9 +41,9 @@ export const Form = () => {
       </p>
       <p>
         <label>
-          <span className="form__labelText">Waluta:</span>
-          <select
-            className="form__field"
+          <LabelText>Waluta:</LabelText>
+          <Field
+            as="select"
             value={currency}
             onChange={({ target }) => setCurrency(target.value)}
           >
@@ -53,17 +52,17 @@ export const Form = () => {
                 {currency.name}
               </option>
             ))}
-          </select>
+          </Field>
         </label>
       </p>
       <p>
-        <button className="form__button">Przelicz</button>
+        <Button>Przelicz</Button>
       </p>
 
-      <p className="form__info">
+      <Info>
         Kursy pochodza ze strony NBP z tabeli nr 213/C/NBP/2025 z dnia
         2025-10-31
-      </p>
+      </Info>
 
       <Result result={result} />
     </form>
