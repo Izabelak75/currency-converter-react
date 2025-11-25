@@ -22,3 +22,4 @@ html {
   background-size: cover;
   background-position: center;
 }
+`;
