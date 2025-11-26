@@ -17,10 +17,11 @@ export const Button = styled.button`
   text-align: center;
   border: 1px solid ${({ theme }) => theme.color.silver};
   border-radius: 5px;
+  width: 100%;
   margin: 0 auto;
   display: block;
   box-shadow: 2px 2px 5px ${({ theme }) => theme.color.purple};
-  padding: 5px;
+  padding: 12px;
   background-color: ${({ theme }) => theme.color.beige};
 
   &:hover {
