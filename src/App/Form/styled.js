@@ -43,7 +43,7 @@ export const Info = styled.p`
   color: ${({ theme }) => theme.color.black};
 `;
 export const Loading = styled.p`
-  color: ${({ theme }) => theme.color.indigo};
+  color: ${({ theme }) => theme.color.teal};
 `;
 
 export const Failure = styled.p`

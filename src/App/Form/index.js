@@ -84,7 +84,7 @@ export const Form = () => {
           </p>
 
           <Info>
-            Kursy walut aktualne na dzień{" "}
+            Kursy walut aktualne na dzien{" "}
             {new Date(ratesData.date).toLocaleString("pl-PL")} z
             currencyapi.com.
           </Info>
