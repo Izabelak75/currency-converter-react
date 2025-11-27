@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Form } from "./Form";
 import { Clock } from "./Clock";
 import { Wrapper } from "./styled";
