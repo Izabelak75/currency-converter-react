@@ -8,5 +8,7 @@ export const theme = {
     indigo: " #4e39aa",
     red: "#f71605a6",
     purple: "#a410e9",
+    teal: "#008080",
+    crimson: "#db143c",
   },
 };
