@@ -51,11 +51,11 @@ export const Form = () => {
         <>
           <p>
             <label>
-              <LabelText>Kwota w zł*:</LabelText>
+              <LabelText>Kwota w zl*:</LabelText>
               <Field
                 value={amount}
                 onChange={({ target }) => setAmount(target.value)}
-                placeholder="Wpisz kwotę w złotowkach"
+                placeholder="Wpisz kwote w zlotowkach"
                 type="number"
                 required
                 step="0.01"
