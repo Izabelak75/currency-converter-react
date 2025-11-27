@@ -1,22 +1,31 @@
 import { useState } from "react";
-import { currencies } from "../currencies";
 import { Result } from "./Result";
-import { Button, Field, Header, Info, LabelText } from "./styled";
+import {
+  Button,
+  Field,
+  Header,
+  Info,
+  LabelText,
+  Loading,
+  Failure,
+} from "./styled";
+import { useRatesData } from "./useRatesData";
 
 export const Form = () => {
-  const [currency, setCurrency] = useState(currencies[0].short);
-  const [amount, setAmount] = useState("");
   const [result, setResult] = useState(null);
-
+  const ratesData = useRatesData();
   const calculateResult = (currency, amount) => {
-    const rate = currencies.find(({ short }) => short === currency).rate;
+    const rate = ratesData.rates[currency].value;
 
     setResult({
       sourceAmount: +amount,
-      targetAmount: amount / rate,
+      targetAmount: amount * rate,
       currency,
     });
   };
+
+  const [currency, setCurrency] = useState("EUR");
+  const [amount, setAmount] = useState("");
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -26,45 +35,63 @@ export const Form = () => {
   return (
     <form onSubmit={onSubmit}>
       <Header>Przelicznik walut</Header>
-      <p>
-        <label>
-          <LabelText>Kwota w zl*:</LabelText>
-          <Field
-            value={amount}
-            onChange={({ target }) => setAmount(target.value)}
-            placeholder="Wpisz kwotę w zl"
-            type="number"
-            required
-            step="0.01"
-          />
-        </label>
-      </p>
-      <p>
-        <label>
-          <LabelText>Waluta:</LabelText>
-          <Field
-            as="select"
-            value={currency}
-            onChange={({ target }) => setCurrency(target.value)}
-          >
-            {currencies.map((currency) => (
-              <option key={currency.short} value={currency.short}>
-                {currency.name}
-              </option>
-            ))}
-          </Field>
-        </label>
-      </p>
-      <p>
-        <Button>Przelicz</Button>
-      </p>
 
-      <Info>
-        Kursy pochodza ze strony NBP z tabeli nr 213/C/NBP/2025 z dnia
-        2025-10-31
-      </Info>
+      {ratesData.state === "loading" ? (
+        <Loading>
+          Moment... <br />
+          Ładuję kursy walut z currencyapi.com
+        </Loading>
+      ) : ratesData.state === "error" ? (
+        // eslint-disable-next-line jsx-a11y/accessible-emoji
+        <Failure>
+          Nie udalo sie pobrac kursow walut Sprawdż, czy masz połączenie z
+          internetem.
+        </Failure>
+      ) : (
+        <>
+          <p>
+            <label>
+              <LabelText>Kwota w zł*:</LabelText>
+              <Field
+                value={amount}
+                onChange={({ target }) => setAmount(target.value)}
+                placeholder="Wpisz kwotę w złotowkach"
+                type="number"
+                required
+                step="0.01"
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              <LabelText>Waluta:</LabelText>
+              <Field
+                as="select"
+                value={currency}
+                onChange={({ target }) => setCurrency(target.value)}
+              >
+                {!!ratesData.rates &&
+                  Object.keys(ratesData.rates).map((currency) => (
+                    <option key={currency} value={currency}>
+                      {currency}
+                    </option>
+                  ))}
+              </Field>
+            </label>
+          </p>
+          <p>
+            <Button>Przelicz</Button>
+          </p>
 
-      <Result result={result} />
+          <Info>
+            Kursy walut aktualne na dzień{" "}
+            {new Date(ratesData.date).toLocaleString("pl-PL")} z
+            currencyapi.com.
+          </Info>
+
+          <Result result={result} />
+        </>
+      )}
     </form>
   );
 };
