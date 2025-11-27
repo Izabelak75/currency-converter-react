@@ -12,7 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Demo
 
-![Demo](public/currency-converter-data-demo.gif)
+![Demo](public/currency-converter-api-demo.gif)
 [Link to the Demo website](https://izabelak75.github.io/currency-converter-react/)
 
 ## Technologies
@@ -21,6 +21,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - CSS
 - JavaScript
 - React
+- API
 
 ## Available Scripts
 
