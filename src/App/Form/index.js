@@ -39,7 +39,7 @@ export const Form = () => {
       {ratesData.state === "loading" ? (
         <Loading>
           Moment... <br />
-          Ładuję kursy walut z currencyapi.com
+          Laduje kursy walut z currencyapi.com
         </Loading>
       ) : ratesData.state === "error" ? (
         // eslint-disable-next-line jsx-a11y/accessible-emoji
